@@ -14,12 +14,14 @@ public class Oval extends GObject {
 
 	@Override
 	public void paintObject(Graphics g) {
-		// TODO: Implement this method.
+		g.setColor(color); /* set oval color */
+		g.fillOval(x, y, width, height); /* fill color in oval shape */
 	}
 	
 	@Override
 	public void paintLabel(Graphics g) {
-		// TODO: Implement this method.
+		g.setColor(Color.darkGray); /* set text color */
+		g.drawString("Oval", x, y+70); /* draw text */
 	}
 	
 }

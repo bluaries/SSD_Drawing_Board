@@ -15,11 +15,11 @@ public class CompositeGObject extends GObject {
 	}
 
 	public void add(GObject gObject) {
-		// TODO: Implement this method.
+		gObjects.add(gObject);
 	}
 
 	public void remove(GObject gObject) {
-		// TODO: Implement this method.
+		gObjects.remove(gObject);
 	}
 
 	@Override
