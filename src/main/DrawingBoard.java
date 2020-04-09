@@ -29,7 +29,14 @@ public class DrawingBoard extends JPanel {
 	}
 	
 	public void groupAll() {
-		// TODO: Implement this method.
+		CompositeGObject compositeGObject = new CompositeGObject();
+		for(GObject gObject:gObjects){
+			compositeGObject.add(gObject);
+		}
+		gObjects.clear();
+		compositeGObject.recalculateRegion();
+		gObjects.add(compositeGObject);
+		repaint();
 	}
 
 	public void deleteSelected() {

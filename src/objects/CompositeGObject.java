@@ -24,21 +24,52 @@ public class CompositeGObject extends GObject {
 
 	@Override
 	public void move(int dX, int dY) {
-		// TODO: Implement this method.
+		this.x += dX;
+		this.y += dY;
+		for(GObject gObject:gObjects){
+			gObject.move(dX,dY);
+		}
 	}
 	
 	public void recalculateRegion() {
-		// TODO: Implement this method.
+		GObject lastPointGObject = gObjects.get(0);
+		int minX = lastPointGObject.x;
+		int minY = lastPointGObject.y;
+		int maxX = lastPointGObject.x + lastPointGObject.width;
+		int maxY = lastPointGObject.y + lastPointGObject.height;
+
+		for(GObject gObject:gObjects){
+			if(minX > gObject.x) {
+				minX = gObject.x;
+			}
+			if(maxX < gObject.x + gObject.width){
+				maxX = gObject.x + gObject.width;
+			}
+			if(minY > gObject.y){
+				minY = gObject.y;
+			}
+			if(maxY < gObject.y + gObject.height){
+				maxY = gObject.y + gObject.height;
+			}
+		}
+		this.x = minX;
+		this.y = minY;
+		this.width = maxX - minX;
+		this.height = maxY - minY;
 	}
 
 	@Override
 	public void paintObject(Graphics g) {
-		// TODO: Implement this method.
+		for(GObject gObject:gObjects){
+			gObject.paintObject(g);
+		}
 	}
 
 	@Override
 	public void paintLabel(Graphics g) {
-		// TODO: Implement this method.
+		for(GObject gObject:gObjects){
+			g.drawString("Group",x,y+70);
+		}
 	}
 	
 }
